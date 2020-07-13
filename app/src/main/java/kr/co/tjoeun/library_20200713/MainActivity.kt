@@ -1,6 +1,7 @@
 package kr.co.tjoeun.library_20200713
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
@@ -29,5 +30,14 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
+        callBtn.setOnClickListener {
+
+            val phoneNum = phoneNumTxt.toString()
+            val myUri = Uri.parse("tel:${phoneNum}")
+            val myIntent = Intent(Intent.ACTION_CALL, myUri)
+            startActivity(myIntent)
+
+        }
     }
 }
